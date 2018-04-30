@@ -1,0 +1,5 @@
+release: https://deepmind.com/blog/open-sourcing-deepmind-lab/
+repository: https://github.com/deepmind/lab
+paper: https://www.analyticsvidhya.com/wp-content/uploads/2016/12/DeepMindLab.pdf
+
+simple tutorial: https://github.com/deepmind/lab/blob/master/python/random_agent.py

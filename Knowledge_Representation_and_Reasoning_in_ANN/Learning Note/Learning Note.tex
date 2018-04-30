@@ -1,0 +1,57 @@
+\documentclass{article}
+\title{Knowledge Representation and Reasoning with Artificial Neural Network - Learning Note}
+\author{Zhengzhong Liang}
+\date{2017-12-27}
+\usepackage[margin=1.2in]{geometry}
+
+
+\begin{document}
+\maketitle
+\section{Knowledge Representation and Reasoning with Deep Neural Network (Doctor Dissertation)}
+\subsection{Framework}
+Certain structures in neural network are designed particularly for certain tasks. In the following table I show the goal and its corresponding structure.
+\begin{table}[!h]
+\caption{Goal and Structure List}
+\centering
+\begin{tabular}{| l | c | r |} \hline
+goal & \multicolumn{2}{p{6cm}|}{\raggedright structure} \\ \hline
+reasoning on large knowledge graph & \multicolumn{2}{p{6cm}|}{\raggedright recurrent neural network with attention mechanism} \\ \hline
+learn latent programs & \multicolumn{2}{p{6cm}|}{\raggedright  neural programmer} \\ \hline
+\end{tabular}
+\label{tab:exp_ProcessFlow_1}
+\end{table}
+
+\subsection{datasets}
+\subsection{Learning Note for Certain Problems}
+\subsubsection{Passage Overview: Key Questions}
+\paragraph{KRR system} Knowledge Representing and Reasoning system.
+\paragraph{Requirements for KRR system} Generalize concepts and relationships.
+\paragraph{Typical Symbolic KRR systems}
+\begin{table}[!h]
+\caption{Goal and Structure List}
+\centering
+\begin{tabular}{| l | c | c | r |} \hline
+system name & time & \multicolumn{2}{p{6cm}|}{\raggedright structure} \\ \hline
+       &      & \multicolumn{2}{p{6cm}|}{\raggedright      } \\ \hline
+natural language interface      &      & \multicolumn{2}{p{6cm}|}{\raggedright      } \\ \hline
+general problem solver       &      & \multicolumn{2}{p{6cm}|}{\raggedright represent knowledge with symbol, reasoning through search} \\ \hline
+\multicolumn{1}{| p{6cm}|}{\raggedright expert system (Inductive Logic Programming, Markov Logic Networks, Probabilistic Soft Logic)}  &      & \multicolumn{2}{p{6cm}|}{\raggedright    enormous human interfere, need background knowledge.  } \\ \hline
+\end{tabular}
+\label{tab:exp_ProcessFlow_1}
+\end{table}
+
+\paragraph{drawbacks of symbolic system} Firstly it fails to represent large numbers of concepts and relationships, because different concepts does not share components. Secondly, it needs large number of human effort. Finally, the mapping to concepts is usually naive, thus failing to deal with real world problem.  
+
+\paragraph{KRR with Neural Network Challenges} (1) How to represent concepts and relationships with distributed representations (2) use these representations to reason.
+
+\paragraph{Summary} The main contribution to the work seems to be (1) present concepts and relationships with distributed representations and (2) use RNN with attention to reason based on this distributed representation.
+
+\subsection{Reasoning on Knowledge Base using RNN}
+\subsubsection{About KB}
+\paragraph{KB definition} Knowledge Base
+\paragraph{What KB contains} It usually contains millions of facts, Such as "PresidentOf(Obama, USA)".
+\paragraph{Drawback of Symbolic KB} It is usually incomplete.
+\paragraph{KB Completion} Add new relationships using the existing relationships is called KB completion.
+
+
+\end{document}

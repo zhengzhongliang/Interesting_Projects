@@ -1,0 +1,38 @@
+\documentclass{article}
+\title{Differentiable Neural Computer Learning Note}
+\author{Zhengzhong Liang}
+\date{2018-04-30}
+
+\begin{document}
+\maketitle
+\section{Code Structure}
+\subsection{About Computation Graph}
+The basic graph is defined in ``DNC.py'', some peripheral parts of graph is defined in ``run$\_$model''function and ``train.py''. The main parts of computation graph of DNC is organized as following:
+\begin{table}
+\centering
+\caption{Organization of DNC}
+\begin{tabular}{| l | c | c | c | r |} \hline
+name & functionality & script & function & class \\ \hline
+controller & an LSTM network which reads data & DNC.py & x & DNC \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Activities in Each Loop}
+In each loop of training in iteration, the agent does the following things: 
+\paragraph{Some input is presented}
+\paragraph{Input is given to LSTM}
+\paragraph{Something is written to memory}
+\paragraph{Something is output from memory}
+\paragraph{The output is decoded by LSTM and printed}
+
+
+\section{Topics to Study}
+\subsection{What type of task does this agent try to finish}
+\subsection{What is the function of memory in this task}
+\subsection{What together tasks can we train the agent to do}
+\subsection{What parts and functions can we add to this agent}
+
+\section{Question}
+\subsection{The memory and controller are defined, but are not connected}
+\subsection{The build function is not used}
+\end{document}
