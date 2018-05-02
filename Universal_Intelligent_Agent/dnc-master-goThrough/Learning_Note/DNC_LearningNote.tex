@@ -3,6 +3,14 @@
 \author{Zhengzhong Liang}
 \date{2018-04-30}
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
 \begin{document}
 \maketitle
 \section{Code Structure}
@@ -45,7 +53,14 @@ No, the DNC is only built once.
 \subsection{How the computation graph is built in tensorflow?}
 Anything before a session starts is considered as computation graph.
 \subsection{What does build do in the code}
+Connects different parts of computations graph. Build function should be orginally a method of snt.AbstractModule. The abstract module is define 
+\href{https://github.com/deepmind/sonnet/blob/master/sonnet/python/modules/base.py}{here}.
+
+As one can see, the build function is a method in this class.
 \subsection{Draw UML for the code}
+See the UML diagram in the folder.
 \subsection{Why there is a init function and a build function in each class}
 init function creates the components of the computation graph, while the build function connects these components. The init function is called when the object of DNC is initiated. The build function is called in the tf.nn.dynamic$\_$rnn function.
+\subsection{The sequence of calling of build function}
+DNC, Access, Freeness, ConsineWeights, TemporalLinkage, ConsineWeights.
 \end{document}

@@ -81,6 +81,7 @@ class CosineWeights(snt.AbstractModule):
     self._strength_op = strength_op
 
   def _build(self, memory, keys, strengths):
+    print("CosineWeights build function called!")
     """Connects the CosineWeights module into the graph.
 
     Args:
@@ -131,6 +132,7 @@ class TemporalLinkage(snt.RNNCore):
     self._num_writes = num_writes
 
   def _build(self, write_weights, prev_state):
+    print("TemporalLinkage build function called!")
     """Calculate the updated linkage state given the write weights.
 
     Args:
@@ -277,6 +279,7 @@ class Freeness(snt.RNNCore):
     self._memory_size = memory_size
 
   def _build(self, write_weights, free_gate, read_weights, prev_usage):
+    print("Freeness build function called!")
     """Calculates the new memory usage u_t.
 
     Memory that was written to in the previous time step will have its usage

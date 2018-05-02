@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Code Structure}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{About Computation Graph}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Activities in Each Loop}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Topics to Study}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{What type of task does this agent try to finish}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{What is the function of memory in this task}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.3}{What together tasks can we train the agent to do}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.4}{What parts and functions can we add to this agent}{section.2}% 8
+\BOOKMARK [1][-]{section.3}{Question}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{The memory and controller are defined, but are not connected}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{The build function is not used}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{The functionality of dynamic rnn}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.4}{In every loop a new DNC is created?}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.5}{How the computation graph is built in tensorflow?}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.6}{What does build do in the code}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.7}{Draw UML for the code}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.8}{Why there is a init function and a build function in each class}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.9}{The sequence of calling of build function}{section.3}% 18

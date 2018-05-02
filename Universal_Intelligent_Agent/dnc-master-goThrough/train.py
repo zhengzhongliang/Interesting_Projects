@@ -82,13 +82,15 @@ def run_model(input_sequence, output_size):
   dnc_core = dnc.DNC(access_config, controller_config, output_size, clip_value)
   initial_state = dnc_core.initial_state(FLAGS.batch_size)
 
-  print('before the DNC build function is called?')
+  print('before dynamic rnn')
 
   output_sequence, _ = tf.nn.dynamic_rnn(
       cell=dnc_core,
       inputs=input_sequence,
       time_major=True,
       initial_state=initial_state)
+
+  print('after dynamic rnn')
 
   return output_sequence, dnc_core
 

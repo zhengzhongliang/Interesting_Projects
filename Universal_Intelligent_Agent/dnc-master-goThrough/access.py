@@ -111,6 +111,7 @@ class MemoryAccess(snt.RNNCore):
     self._freeness = addressing.Freeness(memory_size)
 
   def _build(self, inputs, prev_state):
+    print('Access build function called!')
     """Connects the MemoryAccess module into the graph.
 
     Args:
