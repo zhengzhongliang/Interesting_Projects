@@ -97,7 +97,7 @@ class DNC(snt.RNNCore):
       is a `DNCState` tuple containing the fields `access_output`,
       `access_state`, and `controller_state`.
     """
-
+    print('build function of DNC class is called!')
     prev_access_output = prev_state.access_output
     prev_access_state = prev_state.access_state
     prev_controller_state = prev_state.controller_state

@@ -14,6 +14,7 @@ The basic graph is defined in ``DNC.py'', some peripheral parts of graph is defi
 \begin{tabular}{| l | c | c | c | r |} \hline
 name & functionality & script & function & class \\ \hline
 controller & an LSTM network which reads data & DNC.py & x & DNC \\ \hline
+access & the memory of DNC & access.py, 
 \end{tabular}
 \end{table}
 
@@ -34,5 +35,17 @@ In each loop of training in iteration, the agent does the following things:
 
 \section{Question}
 \subsection{The memory and controller are defined, but are not connected}
+They are connected in the build function, which is called by dynamic rnn function.
 \subsection{The build function is not used}
+They are used in dynamic rnn function.
+\subsection{The functionality of dynamic rnn}
+It connects the different parts of the computation graph of DNC, so that a complete graph will be established after calling this function.
+\subsection{In every loop a new DNC is created?}
+No, the DNC is only built once. 
+\subsection{How the computation graph is built in tensorflow?}
+Anything before a session starts is considered as computation graph.
+\subsection{What does build do in the code}
+\subsection{Draw UML for the code}
+\subsection{Why there is a init function and a build function in each class}
+init function creates the components of the computation graph, while the build function connects these components. The init function is called when the object of DNC is initiated. The build function is called in the tf.nn.dynamic$\_$rnn function.
 \end{document}
