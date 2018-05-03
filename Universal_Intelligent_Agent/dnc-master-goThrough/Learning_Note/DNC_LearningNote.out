@@ -16,3 +16,7 @@
 \BOOKMARK [2][-]{subsection.3.7}{Draw UML for the code}{section.3}% 16
 \BOOKMARK [2][-]{subsection.3.8}{Why there is a init function and a build function in each class}{section.3}% 17
 \BOOKMARK [2][-]{subsection.3.9}{The sequence of calling of build function}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.10}{Draw the inheritance relation ship \(and attributes\) starting from AbstractModule}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.11}{Figure out how abstract class works in python \(e.g. why no init function\)}{section.3}% 20
+\BOOKMARK [1][-]{section.4}{Questions about DNC}{}% 21
+\BOOKMARK [2][-]{subsection.4.1}{Equivalence between Neural network, Turing machine and brain?}{section.4}% 22
