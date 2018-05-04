@@ -68,6 +68,7 @@ tf.flags.DEFINE_integer("checkpoint_interval", -1,
 
 def run_model(input_sequence, output_size):
   """Runs model on input sequence."""
+
   access_config = {
       "memory_size": FLAGS.memory_size,
       "word_size": FLAGS.word_size,
@@ -81,18 +82,15 @@ def run_model(input_sequence, output_size):
 
   dnc_core = dnc.DNC(access_config, controller_config, output_size, clip_value)
   initial_state = dnc_core.initial_state(FLAGS.batch_size)
-
-  print('before dynamic rnn')
-
   output_sequence, _ = tf.nn.dynamic_rnn(
       cell=dnc_core,
       inputs=input_sequence,
       time_major=True,
       initial_state=initial_state)
 
-  print('after dynamic rnn')
+  print('_:',_)
 
-  return output_sequence, dnc_core
+  return output_sequence, _
 
 
 def train(num_training_iterations, report_interval):
@@ -103,7 +101,7 @@ def train(num_training_iterations, report_interval):
                                    FLAGS.min_repeats, FLAGS.max_repeats)
   dataset_tensors = dataset()
 
-  output_logits, dnc_core = run_model(dataset_tensors.observations, dataset.target_size)
+  output_logits, tensors = run_model(dataset_tensors.observations, dataset.target_size)
   # Used for visualization.
   output = tf.round(
       tf.expand_dims(dataset_tensors.mask, -1) * tf.sigmoid(output_logits))
@@ -149,12 +147,10 @@ def train(num_training_iterations, report_interval):
     total_loss = 0
 
     for train_iteration in range(start_iteration, num_training_iterations):
-      _, loss= sess.run([train_step, train_loss])
+      _, loss, tensors_ = sess.run([train_step, train_loss, tensors])
       total_loss += loss
 
-      dnc_mem = dnc_core._access._write_content_weights_mod._word_size
-
-      print('iteration:', start_iteration)
+      print('tensors:',tensors_)
       input("Press enter to continue")
 
       if (train_iteration + 1) % report_interval == 0:

@@ -74,6 +74,7 @@ class DNC(snt.RNNCore):
         access_output=self._access_output_size,
         access_state=self._access.state_size,
         controller_state=self._controller.state_size)
+    self.output = list()
 
   def _clip_if_enabled(self, x):
     if self._clip_value > 0:
@@ -120,6 +121,7 @@ class DNC(snt.RNNCore):
         output_size=self._output_size.as_list()[0],
         name='output_linear')(output)
     output = self._clip_if_enabled(output)
+
 
     return output, DNCState(
         access_output=access_output,
