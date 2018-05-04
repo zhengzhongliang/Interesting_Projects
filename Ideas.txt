@@ -1,3 +1,4 @@
 1, auto encoder/restricted boltzman machine + CNN
 2, CNN + RNN
 3, auto encoder/restricted boltzman machine + RNN
+4, hava siegelmann

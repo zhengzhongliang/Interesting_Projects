@@ -88,7 +88,9 @@ def run_model(input_sequence, output_size):
       time_major=True,
       initial_state=initial_state)
 
-  print('_:',_)
+#  print('_:')
+#  for tensor_print in _:
+#    print(tensor_print)
 
   return output_sequence, _
 
@@ -101,7 +103,7 @@ def train(num_training_iterations, report_interval):
                                    FLAGS.min_repeats, FLAGS.max_repeats)
   dataset_tensors = dataset()
 
-  output_logits, tensors = run_model(dataset_tensors.observations, dataset.target_size)
+  output_logits, DNCState_ = run_model(dataset_tensors.observations, dataset.target_size)
   # Used for visualization.
   output = tf.round(
       tf.expand_dims(dataset_tensors.mask, -1) * tf.sigmoid(output_logits))
@@ -147,10 +149,10 @@ def train(num_training_iterations, report_interval):
     total_loss = 0
 
     for train_iteration in range(start_iteration, num_training_iterations):
-      _, loss, tensors_ = sess.run([train_step, train_loss, tensors])
+      _, loss, access_output_ = sess.run([train_step, train_loss, DNCState_.access_output])
       total_loss += loss
 
-      print('tensors:',tensors_)
+      print('access output:',access_output_.shape)
       input("Press enter to continue")
 
       if (train_iteration + 1) % report_interval == 0:

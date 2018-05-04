@@ -38,8 +38,28 @@ In each loop of training in iteration, the agent does the following things:
 \section{Topics to Study}
 \subsection{What type of task does this agent try to finish}
 \subsection{What is the function of memory in this task}
-\subsection{What together tasks can we train the agent to do}
+\subsection{What tyep of tasks can we train the agent to do}
 \subsection{What parts and functions can we add to this agent}
+
+\section{Code Features}
+\subsection{The Structure of Return Value of DNC Core}
+\begin{table}
+\centering
+\begin{tabular}{| l | c | c | r |} \hline
+Level 1  & Level 2          & Level 3           & Level 4  \\ \hline
+DNCState & access$\_$output &                   &   \\ \hline
+         & access$\_$state  & memory            &   \\ \hline
+         &                  & read$\_$weights   &   \\ \hline
+         &                  & write$\_$weights  &   \\ \hline
+         &                  & linkage           & link \\ \hline
+         &                  &                   & precedence$\_$weights \\ \hline
+         &                  & usage             & \\ \hline
+         & controller$\_$state    & hidden            & \\ \hline
+         &                  & cell              & \\ \hline
+
+
+\end{tabular}
+\end{table}
 
 \section{Question}
 \subsection{The memory and controller are defined, but are not connected}
@@ -65,9 +85,18 @@ init function creates the components of the computation graph, while the build f
 DNC, Access, Freeness, ConsineWeights, TemporalLinkage, ConsineWeights.
 \subsection{Draw the inheritance relation ship (and attributes) starting from AbstractModule}
 \subsection{Figure out how abstract class works in python (e.g. why no init function)}
+Question resolved.
 
 \subsection{Another implementation of DNC}
 \href{https://github.com/Mostafa-Samir/DNC-tensorflow/blob/master/dnc/dnc.py}{Is available here}
+
+\subsection{Is the input presented to DNC at each time step?}
+
+\subsection{What is the timestep of DNC}
+Since all state tensors have $16$ in its dimension, the timestep seems to be $16$.
+
+\subsection{What is the size of each memory block in DNC memory?}
+It should be either 16 (beacuse the last dimension in access$\_$output is 16) or 64 (because the LSTM size is 64).
 
 \section{Questions about DNC}
 \subsection{Equivalence between Neural network, Turing machine and brain?}
