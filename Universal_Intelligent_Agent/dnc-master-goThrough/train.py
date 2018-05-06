@@ -104,6 +104,8 @@ def train(num_training_iterations, report_interval):
   dataset_tensors = dataset()
 
   output_logits, DNCState_ = run_model(dataset_tensors.observations, dataset.target_size)
+  # shape of input_tensor.observations: (?, 16, 6)
+  # print('input tensors:', dataset_tensors.observations)
   # Used for visualization.
   output = tf.round(
       tf.expand_dims(dataset_tensors.mask, -1) * tf.sigmoid(output_logits))
@@ -149,11 +151,13 @@ def train(num_training_iterations, report_interval):
     total_loss = 0
 
     for train_iteration in range(start_iteration, num_training_iterations):
-      _, loss, access_output_ = sess.run([train_step, train_loss, DNCState_.access_output])
+      _, loss, DNCState_print = sess.run([train_step, train_loss, DNCState_])
       total_loss += loss
 
-      print('access output:',access_output_.shape)
-      input("Press enter to continue")
+      print('DNC State:')
+      print([state_ for state_ in DNCState_])
+      input('press enter to continue')
+
 
       if (train_iteration + 1) % report_interval == 0:
         dataset_tensors_np, output_np = sess.run([dataset_tensors, output])
@@ -163,6 +167,9 @@ def train(num_training_iterations, report_interval):
                         train_iteration, total_loss / report_interval,
                         dataset_string)
         total_loss = 0
+
+        print('input sequence:',input_sequence_)
+        input("Press enter to continue")
 
 
 def main(unused_argv):
