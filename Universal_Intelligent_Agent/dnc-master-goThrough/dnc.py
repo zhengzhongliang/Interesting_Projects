@@ -26,6 +26,8 @@ import collections
 import numpy as np
 import sonnet as snt
 import tensorflow as tf
+import inspect
+
 
 import access
 
@@ -83,6 +85,14 @@ class DNC(snt.RNNCore):
       return x
 
   def _build(self, inputs, prev_state):
+    curframe = inspect.currentframe()
+    calframe = inspect.getouterframes(curframe, 2)
+    #print('caller name:', calframe)   #original: 'caller name:', calframe[1][3]
+    print('===============call function=====================')
+    for i in np.arange(len(calframe)):
+      print('file:',calframe[i][1], ' line:',calframe[i][2],' function:',calframe[i][3])
+      print('\n')
+    print('=================================================')
     """Connects the DNC core into the graph.
 
     Args:

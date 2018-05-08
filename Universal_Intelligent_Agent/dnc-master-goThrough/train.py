@@ -23,6 +23,7 @@ import sonnet as snt
 
 import dnc
 import repeat_copy
+import sys
 
 FLAGS = tf.flags.FLAGS
 
@@ -170,7 +171,6 @@ def train(num_training_iterations, report_interval):
 
         print('input sequence:',input_sequence_)
         input("Press enter to continue")
-
 
 def main(unused_argv):
   tf.logging.set_verbosity(3)  # Print INFO log messages.

@@ -3,3 +3,4 @@
 3, auto encoder/restricted boltzman machine + RNN
 4, hava siegelmann
 5, deep boltzmann machine with external memory
+6, memory network, dynamic memory network
