@@ -57,7 +57,7 @@ tf.flags.DEFINE_integer("max_repeats", 2,
                         "Upper limit on number of copy repeats.")
 
 # Training options.
-tf.flags.DEFINE_integer("num_training_iterations", 100000,
+tf.flags.DEFINE_integer("num_training_iterations", 6000,
                         "Number of iterations to train for.")
 tf.flags.DEFINE_integer("report_interval", 100,
                         "Iterations between reports (samples, valid loss).")
@@ -144,6 +144,9 @@ def train(num_training_iterations, report_interval):
   else:
     hooks = []
 
+  writer=tf.summary.FileWriter('event')
+  writer.add_graph(tf.get_default_graph())
+  
   # Train.
   with tf.train.SingularMonitoredSession(
       hooks=hooks, checkpoint_dir=FLAGS.checkpoint_dir) as sess:
@@ -155,9 +158,9 @@ def train(num_training_iterations, report_interval):
       _, loss, DNCState_print = sess.run([train_step, train_loss, DNCState_])
       total_loss += loss
 
-      print('DNC State:')
-      print([state_ for state_ in DNCState_])
-      input('press enter to continue')
+#      print('DNC State:')
+#      print([state_ for state_ in DNCState_])
+#      input('press enter to continue')
 
 
       if (train_iteration + 1) % report_interval == 0:
@@ -169,8 +172,8 @@ def train(num_training_iterations, report_interval):
                         dataset_string)
         total_loss = 0
 
-        print('input sequence:',input_sequence_)
-        input("Press enter to continue")
+#        print('input sequence:',input_sequence_)
+#        input("Press enter to continue")
 
 def main(unused_argv):
   tf.logging.set_verbosity(3)  # Print INFO log messages.
