@@ -24,6 +24,7 @@ import tensorflow as tf
 
 import addressing
 import util
+import numpy as np
 
 AccessState = collections.namedtuple('AccessState', (
     'memory', 'read_weights', 'write_weights', 'linkage', 'usage'))
@@ -109,6 +110,7 @@ class MemoryAccess(snt.RNNCore):
 
     self._linkage = addressing.TemporalLinkage(memory_size, num_writes)
     self._freeness = addressing.Freeness(memory_size)
+    #self.memory_all = tf.constant(np.zeros((16,16,16)))
 
   def _build(self, inputs, prev_state):
     print('Access build function called!')
@@ -150,7 +152,7 @@ class MemoryAccess(snt.RNNCore):
         prev_read_weights=prev_state.read_weights,
         link=linkage_state.link)
     read_words = tf.matmul(read_weights, memory)
-
+    time_step+=1
     return (read_words, AccessState(
         memory=memory,
         read_weights=read_weights,
@@ -306,6 +308,7 @@ class MemoryAccess(snt.RNNCore):
   @property
   def state_size(self):
     """Returns a tuple of the shape of the state tensors."""
+
     return AccessState(
         memory=tf.TensorShape([self._memory_size, self._word_size]),
         read_weights=tf.TensorShape([self._num_reads, self._memory_size]),

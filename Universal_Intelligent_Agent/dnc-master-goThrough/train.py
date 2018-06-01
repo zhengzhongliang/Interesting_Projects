@@ -162,6 +162,11 @@ def train(num_training_iterations, report_interval):
 #      print([state_ for state_ in DNCState_])
 #      input('press enter to continue')
 
+      print('DNC access_state.memory:')
+      print(DNCState_print.access_state.memory_all)
+      print('DNC access_state.memory shape:')
+      print(DNCState_print.access_state.memory_all.shape)
+      input('Press Enter to Continue')
 
       if (train_iteration + 1) % report_interval == 0:
         dataset_tensors_np, output_np = sess.run([dataset_tensors, output])
