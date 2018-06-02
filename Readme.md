@@ -1,0 +1,2 @@
+# Interesting Projects
+This repository stores interesting projects about Neural Networks, Intelligent Agents, Knowledge System and Question Answering Systems. Most of the projects are copied from other repositories. There is also a repository about my exercise of TensorFlow APIs. The ultimate goal is to combine different learning models to achieve a Universal Intelligent Agent (But I doubt I can achieve it).

@@ -1,0 +1,4 @@
+# TensorFlow API Exercises
+This repository stores my exercises about TensorFlow's APIs, so that I do not need to refer to the TensorFlow official document when I need those APIs (because this is usually not helpful). Some featured exercises include:
+* 12 ForLoop RNN Gradient. Here I manually unroll an RNN to many time steps and let it learn a simple sequence. 
+* 15 LSTM MNIST Formal. Here I manually unroll an LSTM and train it on MNIST dataset. A training accuracy of about 99% is achieved after about 10 epochs. Different from TensorFlow's API dynamic_rnn, where user could not print intermediate network states, here the user can print the state at any time step. A major shortcoming of this model is that it converges much slower than the starndard TensorFlow API. The reasons may include the initialization or other factors. 
