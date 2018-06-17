@@ -4,3 +4,5 @@
 4, hava siegelmann
 5, deep boltzmann machine with external memory
 6, memory network, dynamic memory network
+7, autoencoder + DNC
+8, make a website and let a lot of people to help me to train the agent.
