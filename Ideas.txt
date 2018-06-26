@@ -1,5 +1,9 @@
 1, auto encoder/restricted boltzman machine + CNN
-2, CNN + RNN
+2, CNN + RNN (video processing, ucf101: http://crcv.ucf.edu/data/UCF101.php)
+2.1 there have been some works which uses CNN+RNN to process videos. 
+2.2 Pre-train method: use pre-trained CNN to preprocess image, then feed the preprocessed image to RNN
+2.3 Seq-to-Seq: use one model to train CNN+RNN simutaneously. There is done by several 2015 ICCV paper (good place to start: youtube video captioning). 
+2.4 
 3, auto encoder/restricted boltzman machine + RNN
 4, hava siegelmann
 5, deep boltzmann machine with external memory
