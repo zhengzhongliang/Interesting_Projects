@@ -1,0 +1,31 @@
+import tensorflow as tf
+import numpy as np
+# loop_vars: a list that asserts which variables will change in the loop
+
+def cond(i,b):  # replace anonymous function with explicit function
+  return tf.less(i,10)
+
+def body(i,b):
+  b = tf.Print(b,[b],"b:")   # use this to print the variable in each step in while loop. The assignment is necessary.
+  return [tf.add(i,1), tf.add(b,i)]
+
+i = tf.Variable(1)
+b = tf.Variable(1)
+
+loop_vars = [i,b]
+
+final_value = tf.while_loop(cond, body, loop_vars)
+
+#sess = tf.InteractiveSession()   # either InteractiveSession() or Session() will work here.
+sess = tf.Session()   
+
+sess.run(tf.global_variables_initializer())
+
+output = sess.run([final_value])
+print(output)  #result should be 45
+
+# a vanilla tf.while_loop example
+# the variables in cond, the variables in body, and the the variables in the body return must be the same
+# and the position of variables must be consistent, otherwise it causes unreasonable results.
+# think of it as a normal "while" function (instead of "for") like in other languages. The body will take care of both the "i" as well as other variables.
+
