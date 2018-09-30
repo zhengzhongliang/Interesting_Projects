@@ -1,0 +1,25 @@
+import tensorflow as tf
+import numpy as np
+
+def cond(i, _x):
+      return tf.less(i, 10)
+
+def gen_body(v):
+    def body(i, x):
+        x = tf.Print(x, [x], "x: ")
+        v_assign = v.assign(x + 1)
+        v_assign = tf.Print(v_assign, [v_assign], "v_assign: ")
+        with tf.control_dependencies([v_assign]):
+          sq = tf.square(v)  # <---- put 'sq' definition inside loop
+          sq = tf.Print(sq, [sq], "sq: ")
+          sq_neg = tf.negative(sq)
+        sq_neg = tf.Print(sq_neg, [i, sq_neg], message='i and sq_neg:')
+        return tf.add(i, 1), sq_neg
+    return body
+
+sess = tf.InteractiveSession()
+
+v = tf.Variable(2)
+l = tf.while_loop(cond, gen_body(v), (1, v))
+sess.run(tf.global_variables_initializer())
+sess.run(l)
