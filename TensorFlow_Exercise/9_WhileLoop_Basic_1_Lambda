@@ -1,0 +1,23 @@
+import tensorflow as tf
+import numpy as np
+# loop_vars: a list that asserts which variables will change in the loop
+i = tf.Variable(1)
+b = tf.Variable(1)
+
+
+cond = lambda i,b: tf.less(i,10)
+body = lambda i,b: [tf.add(i,1), tf.add(b,i)]
+
+loop_vars = [i,b]
+
+final_value = tf.while_loop(cond, body, loop_vars)
+
+with tf.Session() as sess:
+  sess.run(tf.global_variables_initializer())
+  output = sess.run([final_value])
+  print(output)  #result should be 45
+
+# a vanilla tf.while_loop example
+# the variables in cond, the variables in body, and the the variables in the body return must be the same
+# and the position of variables must be consistent, otherwise it causes unreasonable results.
+
