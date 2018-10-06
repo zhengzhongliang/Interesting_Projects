@@ -1,0 +1,43 @@
+import tensorflow as tf
+
+
+A = tf.TensorArray(tf.float32, 5)  # a dynamic tensor which can change size
+A =A.write(0,[1.0])
+
+
+a = A.read(0)
+with tf.Session() as sess:
+  init = tf.global_variables_initializer()
+  sess.run(init)
+  print(sess.run([a]))   # this works fine. If A[0] is empty, then this does not work
+  print(sess.run([A.stack()]))
+  
+  
+  
+# more usage from: https://blog.csdn.net/guolindonggld/article/details/79256018
+
+#import tensorflow as tf
+
+
+#def condition(time, output_ta_l):
+#    return tf.less(time, 3)
+
+
+#def body(time, output_ta_l):
+#    output_ta_l = output_ta_l.write(time, [2.4, 3.5])
+#    return time + 1, output_ta_l
+
+
+#time = tf.constant(0)
+#output_ta = tf.TensorArray(dtype=tf.float32, size=1, dynamic_size=True)
+
+#result = tf.while_loop(condition, body, loop_vars=[time, output_ta])
+
+#last_time, last_out = result
+
+#final_out = last_out.stack()
+
+#with tf.Session():
+#    print(last_time.eval())
+#    print(final_out.eval())
+
